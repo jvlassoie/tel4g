@@ -1,0 +1,129 @@
+/***********************************
+	FONTS
+***********************************/
+@font-face {
+  font-family: "VarelaRound";
+  src: url("../fonts/VarelaRound-Regular.ttf"); }
+
+/***********************************
+	COLORS
+***********************************/
+/***********************************
+	GENERAL
+***********************************/
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+svg {
+  margin-top: 10%;
+  height: 20em;
+  width: 100%; }
+
+.title {
+  text-transform: uppercase; }
+
+body {
+  background: #FFF;
+  font-family: "VarelaRound", sans-serif;
+  color: #000; }
+
+.panel ul {
+  list-style-type: none; }
+
+.panel .price {
+  font-size: 2em; }
+
+.btnValide {
+  margin-top: 8vh; }
+
+/***********************************
+  IMG
+***********************************/
+.imgCaract {
+  height: 90vh;
+  width: 100%; }
+
+.titleModel {
+  margin-bottom: 10vh; }
+
+/***********************************
+	PANEL
+***********************************/
+.choice {
+  transition-duration: 0.2s;
+  transition-property: all; }
+
+.choice:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 5px #888888; }
+
+.abonnement-active {
+  box-shadow: 10px 10px 5px #2980b9;
+  color: #3498db;
+  font-size: 2vh; }
+
+.option-active {
+  box-shadow: 10px 10px 5px #27ae60;
+  color: #16a085;
+  font-size: 2vh; }
+
+/***********************************
+	HERO
+***********************************/
+#hero {
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(to bottom right, rgba(255, 75, 31, 0.3), rgba(255, 144, 104, 0.6)), url(../img/catPhone.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center; }
+  #hero h1, #hero h3 {
+    color: #16a085; }
+
+/***********************************
+	NAVBAR
+***********************************/
+.nav-replace {
+  margin-bottom: 10vh; }
+
+.navbar-header .navbar-brand {
+  color: #16a085; }
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #16a085; }
+
+.nav-color {
+  background-color: #1F2124; }
+
+.nav-trans {
+  background-color: transparent;
+  box-shadow: unset; }
+
+/***********************************
+	FOOTER
+***********************************/
+#footer-custom {
+  background: linear-gradient(to right, #00C9FF, #92FE9D);
+  position: relative;
+  margin-top: 30vh;
+  font-family: "VarelaRound", sans-serif;
+  padding-top: 4vh;
+  padding-bottom: 8vh; }
+  #footer-custom p {
+    color: #1F2124; }

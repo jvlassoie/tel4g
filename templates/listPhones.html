@@ -1,0 +1,31 @@
+<div ng-include="'../partials/menu.html'">
+</div>
+<!-- CONTENT -->
+<div class="container">
+	<fieldset>
+		<legend><h3>Nos Téléphones</h3></legend>
+		<div class="row" >
+			<div ng-show="!loader">Chargement...</div>
+			<div ng-show="loader">
+				<div ng-repeat="phone in phones">
+					<div class="col-xs-12 col-md-4">
+						<a href="/phones/{{ phone.id }}">
+							<div  class="panel panel-default">
+								<div class="panel-body">
+									<img src="{{ phone.picture }}" width="280" height="300">
+									<ul>
+										<li class="price">prix: {{ phone.price }}€</li>
+										<li>marque: {{ phone.brand.name }}</li>
+										<li>modèle: {{ phone.model }}</li>
+									</ul>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div ng-include="'../partials/footer.html'">
+</div>

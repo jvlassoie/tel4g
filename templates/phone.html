@@ -1,0 +1,63 @@
+<div ng-include="'../partials/menu.html'">
+</div>
+<div class="container">
+	<div ng-show="!loader">Chargement...</div>
+	<div ng-show="loader">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<img src="{{phone.picture}}" class="imgCaract">
+			</div>
+			<div class="col-xs-12 col-md-6">
+			<h1 class="titleModel">{{phone.brand.name | uppercase}} {{phone.model | uppercase}}</h1>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Caractéristique</th>
+							<th>Valeur</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Poids(g)</td>
+							<td>{{phone.weight}}</td>
+						</tr>
+						<tr>
+							<td>Hauteur(mm)</td>
+							<td>{{phone.height}}</td>
+						</tr>
+						<tr>
+							<td>Largeur(mm)</td>
+							<td>{{phone.width}}</td>
+						</tr>
+						<tr>
+							<td>Epaisseur(mm)</td>
+							<td>{{phone.thickness}}</td>
+						</tr>
+						<tr>
+							<td>Autonomie(h)</td>
+							<td>{{phone.autonomy}}</td>
+						</tr>
+						<tr>
+							<td>Système d'exploitation</td>
+							<td>{{phone.os.name}}</td>
+						</tr>
+						<tr>
+							<td>Capacité mémoire(Go)</td>
+							<td>{{phone.memory}}</td>
+						</tr>
+						<tr>
+							<td>Extension mémoire</td>
+							<td>{{phone.memoryExtension == true ? "oui" : "non"}}</td>
+						</tr>
+						<tr>
+							<td>Norme 4G</td>
+							<td>{{phone.standard4g == true ? "oui" : "non"}}</td>
+						</tr>
+					</tbody>
+				</table> 
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'../partials/footer.html'">
+</div>

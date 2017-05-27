@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<title ng-bind="$state.current.data.pageTitle"></title>
+	<base href="/">
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+<body>
+	<!-- VIEWS -->
+	<div ui-view></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-beta.3/angular-ui-router.min.js"></script>
+	<script src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+	<script src="https://cdn.rawgit.com/riggerthegeek/ng-page-title/master/dist/ng-page-title.min.js"></script>
+	<script src="js/config/appConfig.js"></script>
+	<script src="js/factory/baseFactory.js"></script>
+	<script src="js/factory/subscriptionFactory.js"></script>
+	<script src="js/factory/optionFactory.js"></script>
+	<script src="js/factory/phoneFactory.js"></script>
+	<script src="js/factory/brandFactory.js"></script>
+	<script src="js/factory/operatingSystemFactory.js"></script>
+	<script src="js/controller/homeCtrl.js"></script>
+	<script src="js/controller/listPhoneCtrl.js"></script>
+	<script src="js/controller/phoneCtrl.js"></script>
+</body>
+</html>
