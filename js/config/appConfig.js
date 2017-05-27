@@ -21,6 +21,13 @@ app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		data: { pageTitle: "Tel4g : Téléphone description" }
 		
 	})
+	.state('register', {
+		url: "/user/new",
+		templateUrl : "templates/register.html",
+		controller: "registerCtrl",
+		data: { pageTitle: "Tel4g : Inscription" }
+		
+	})
 	$urlRouterProvider.otherwise('/index');
 
 	$locationProvider.html5Mode(true);
