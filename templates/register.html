@@ -2,7 +2,7 @@
 </div>
 <!-- CONTENT -->
 <div class="container">
-	<form novalidate name="formRegister" class="form-horizontal">
+	<form novalidate name="formRegister" class="form-horizontal" ng-submit="addUser(newUser)">
 		<fieldset>
 			<legend><h3>Rejoignez-nous</h3></legend>
 			<div class="form-group">
@@ -56,13 +56,19 @@
 				<div class="col-md-10">
 					<input type="password" ng-model="newUser.passwordVerify" name="inputPasswordVerify" class="form-control" id="inputPasswordVerify" placeholder="Confirmer mot de passe" required>
 					<div ng-show="formRegister.$submitted || formRegister.inputPasswordVerify.$touched">
+					<div ng-if="newUser.password != newUser.passwordVerify && newUser.passwordVerify != NULL ">
+							<span class="errorInput">Les mots de passes sont différents.</span>
+						</div>
 						<span class="errorInput" ng-show="formRegister.inputPasswordVerify.$error.required">Veuillez saisir votre mot de passe.</span>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-12 text-center" id="customButtonSubmit">
-					<button type="submitRegister" ng-click="addUser(newUser)" class="btn btn-lg btn-primary">M'inscrire</button>
+					<div ng-show="formRegister.$submitted">
+						<span class="errorInput" ng-show="formRegister.$error.required">*Un des champs requis n'est pas rempli.</span>
+					</div>
+					<button type="submitRegister" ng-disabled="formRegister.$invalid" class="btn btn-lg btn-primary">M'inscrire</button>
 				</div>
 			</div>
 		</fieldset>
