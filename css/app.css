@@ -188,3 +188,6 @@ body {
 ***********************************/
 #customButtonSubmit {
   margin-top: 5em; }
+
+.errorInput {
+  color: #c0392b; }

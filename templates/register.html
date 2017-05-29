@@ -2,48 +2,67 @@
 </div>
 <!-- CONTENT -->
 <div class="container">
-	<form name="formRegister" class="form-horizontal">
+	<form novalidate name="formRegister" class="form-horizontal">
 		<fieldset>
 			<legend><h3>Rejoignez-nous</h3></legend>
 			<div class="form-group">
 				<label for="inputNom" class="col-md-2 control-label">Nom</label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="inputNom" placeholder="Nom">
+					<input type="text" ng-model="newUser.lastName" name="inputNom" class="form-control" id="inputNom" placeholder="Nom" required>
+					<div ng-show="formRegister.$submitted || formRegister.inputNom.$touched">
+						<span class="errorInput" ng-show="formRegister.inputNom.$error.required">Veuillez saisir votre nom.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPrenom" class="col-md-2 control-label">Prenom</label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="inputPrenom" placeholder="Prenom">
+					<input type="text" ng-model="newUser.firstName" name="inputPrenom" class="form-control" id="inputPrenom" placeholder="Prenom" required>
+					<div ng-show="formRegister.$submitted || formRegister.inputPrenom.$touched">
+						<span class="errorInput" ng-show="formRegister.inputPrenom.$error.required">Veuillez saisir votre prenom.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputBirthDate" class="col-md-2 control-label">Date de naissance</label>
 				<div class="col-md-10">
-					<input type="date" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+					<input type="date" ng-model="newUser.birthDate" name="inputBirthDate" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+					<div ng-show="formRegister.$submitted || formRegister.inputBirthDate.$touched">
+						<span class="errorInput" ng-show="formRegister.inputBirthDate.$error.date">La date est invalide.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputEmail" class="col-md-2 control-label">Email</label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+					<input type="email" ng-model="newUser.email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email" required>
+					<div ng-show="formRegister.$submitted || formRegister.inputEmail.$touched">
+						<span class="errorInput" ng-show="formRegister.inputEmail.$error.required">Veuillez saisir votre email.</span>
+						<span class="errorInput" ng-show="formRegister.inputEmail.$error.email">Votre email est invalide.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPassword" class="col-md-2 control-label">Mot de passe</label>
 				<div class="col-md-10">
-					<input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+					<input type="password" ng-model="newUser.password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Mot de passe" required>
+					<div ng-show="formRegister.$submitted || formRegister.inputPassword.$touched">
+						<span class="errorInput" ng-show="formRegister.inputPassword.$error.required">Veuillez saisir votre mot de passe.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPasswordVerify" class="col-md-2 control-label">Confirmer mot de passe</label>
 				<div class="col-md-10">
-					<input type="password" class="form-control" id="inputPasswordVerify" placeholder="Confirmer mot de passe">
+					<input type="password" ng-model="newUser.passwordVerify" name="inputPasswordVerify" class="form-control" id="inputPasswordVerify" placeholder="Confirmer mot de passe" required>
+					<div ng-show="formRegister.$submitted || formRegister.inputPasswordVerify.$touched">
+						<span class="errorInput" ng-show="formRegister.inputPasswordVerify.$error.required">Veuillez saisir votre mot de passe.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-12 text-center" id="customButtonSubmit">
-					<button type="submitRegister" class="btn btn-lg btn-primary">M'inscrire</button>
+					<button type="submitRegister" ng-click="addUser(newUser)" class="btn btn-lg btn-primary">M'inscrire</button>
 				</div>
 			</div>
 		</fieldset>

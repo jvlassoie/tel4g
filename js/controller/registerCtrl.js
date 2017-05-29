@@ -4,6 +4,8 @@ Ressources
 ***************************************/
 /* init var*/
 
-
+$scope.addUser = function(user){
+	console.log(user)
+}
 
 })
