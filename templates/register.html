@@ -2,9 +2,27 @@
 </div>
 <!-- CONTENT -->
 <div class="container">
-	<form class="form-horizontal">
+	<form name="formRegister" class="form-horizontal">
 		<fieldset>
 			<legend><h3>Rejoignez-nous</h3></legend>
+			<div class="form-group">
+				<label for="inputNom" class="col-md-2 control-label">Nom</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" id="inputNom" placeholder="Nom">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPrenom" class="col-md-2 control-label">Prenom</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" id="inputPrenom" placeholder="Prenom">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputBirthDate" class="col-md-2 control-label">Date de naissance</label>
+				<div class="col-md-10">
+					<input type="date" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="inputEmail" class="col-md-2 control-label">Email</label>
 				<div class="col-md-10">
@@ -12,9 +30,20 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="col-md-2 control-label">Password</label>
+				<label for="inputPassword" class="col-md-2 control-label">Mot de passe</label>
 				<div class="col-md-10">
-					<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+					<input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPasswordVerify" class="col-md-2 control-label">Confirmer mot de passe</label>
+				<div class="col-md-10">
+					<input type="password" class="form-control" id="inputPasswordVerify" placeholder="Confirmer mot de passe">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-12 text-center" id="customButtonSubmit">
+					<button type="submitRegister" class="btn btn-lg btn-primary">M'inscrire</button>
 				</div>
 			</div>
 		</fieldset>

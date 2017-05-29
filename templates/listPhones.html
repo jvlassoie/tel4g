@@ -5,7 +5,7 @@
 	<fieldset>
 		<legend><h3>Nos Téléphones</h3></legend>
 		<div class="row" >
-			<div ng-show="!loader">Chargement...</div>
+			<div ng-show="!loader" id="loader"></div>
 			<div ng-show="loader">
 				<div ng-repeat="phone in phones">
 					<div class="col-xs-12 col-md-4">
