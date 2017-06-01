@@ -22,7 +22,10 @@ $scope.addUser = function(formUser){
 		console.log("adding user successfully")
 		$window.location.href = '/index';
 	},function(msg){
+		$scope.loader = false
+		$window.alert("une erreur est survenue !")
 		console.log("failure")
+		$window.location.href = '/index';
 
 	})
 	console.log(user)

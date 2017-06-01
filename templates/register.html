@@ -28,7 +28,9 @@
 				<div class="form-group">
 					<label for="inputBirthDate" class="col-md-2 control-label">Date de naissance</label>
 					<div class="col-md-10">
-						<input type="date" ng-model="newUser.birthDate" name="inputBirthDate" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+						<datepicker date-format="dd-MM-yyyy">	
+						<input type="text" ng-model="newUser.birthDate" name="inputBirthDate" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+						</datepicker>	
 						<div ng-show="formRegister.$submitted || formRegister.inputBirthDate.$touched">
 							<span class="errorInput" ng-show="formRegister.inputBirthDate.$error.date">La date est invalide.</span>
 						</div>
