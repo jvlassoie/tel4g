@@ -29,10 +29,10 @@
 					<label for="inputBirthDate" class="col-md-2 control-label">Date de naissance</label>
 					<div class="col-md-10">
 						<datepicker date-format="dd-MM-yyyy">	
-						<input type="text" ng-model="newUser.birthDate" name="inputBirthDate" class="form-control" id="inputBirthDate" placeholder="Date de naissance">
+						<input type="text" ng-model="newUser.birthDate" name="inputBirthDate" class="form-control" id="inputBirthDate" ng-pattern="/^((\d{4})[-/](\d{2})[-/](\d{2})|(\d{2})[-/](\d{2})[-/](\d{4}))$/" placeholder="Date de naissance">
 						</datepicker>	
 						<div ng-show="formRegister.$submitted || formRegister.inputBirthDate.$touched">
-							<span class="errorInput" ng-show="formRegister.inputBirthDate.$error.date">La date est invalide.</span>
+							<span class="errorInput" ng-show="formRegister.inputBirthDate.$error.date || formRegister.inputBirthDate.$error.pattern">La date est invalide.</span>
 						</div>
 					</div>
 				</div>
