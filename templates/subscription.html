@@ -1,0 +1,52 @@
+<div ng-include="'../partials/menu.html'">
+</div>
+<!-- CONTENT -->
+<div class="container">
+	<fieldset>
+		<legend><h3>Votre abonnement</h3></legend>
+		<div class="row" >
+			<div ng-show="!loader" id="loader"></div>
+			<div ng-show="loader">
+				<table class="table table-striped table-hover ">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Produit</th>
+							<th>Caractéristque</th>
+							<th>Tarif</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Telephonie</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+						<tr>
+							<td>Option</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+						<tr class="info">
+							<td>Total</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+					</tbody>
+				</table> 
+				<div class="row">
+					<div class="col-xs-12">
+						<button class="btn btn-success">Submit</button>
+						<button class="btn btn-warning">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</fieldset>
+</div>
+<div ng-include="'../partials/footer.html'">
+</div>

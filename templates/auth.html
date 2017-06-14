@@ -1,0 +1,37 @@
+<div ng-include="'../partials/menu.html'">
+</div>
+<!-- CONTENT -->
+<div class="container">
+	<form novalidate name="formAuth" class="form-horizontal" ng-submit="loginUser(userAuth)">
+		<fieldset>
+			<legend><h3>Identifiez-vous</h3></legend>
+			<div class="form-group">
+				<label for="inputEmail" class="col-md-2 control-label">Email</label>
+				<div class="col-md-10">
+					<input type="email" ng-model="userAuth.email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email" ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i' required>
+					<div ng-show="formAuth.$submitted || formAuth.inputEmail.$touched">
+						<span class="errorInput" ng-show="formAuth.inputEmail.$error.required">Veuillez saisir votre email.</span>
+						<span class="errorInput" ng-show="formAuth.inputEmail.$error.email || formAuth.inputEmail.$error.pattern">Votre email est invalide.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-md-2 control-label">Mot de passe</label>
+				<div class="col-md-10">
+					<input type="password" ng-model="userAuth.password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Mot de passe" required>
+					<div ng-show="formAuth.$submitted || formAuth.inputPassword.$touched">
+						<span class="errorInput" ng-show="formAuth.inputPassword.$error.required">Veuillez saisir votre mot de passe.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-12 text-center" id="customButtonSubmit">
+					<button type="submitRegister" ng-disabled="userAuth.password == NULL || userAuth.email == NULL || formAuth.$invalid" class="btn btn-lg btn-primary">M'identifier</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+</div>
+<div ng-include="'../partials/footer.html'">
+</div>

@@ -1,4 +1,4 @@
-app.controller("homeCtrl", function ($scope,subscriptionFactory,optionFactory,$window,$document,$q,lodash) {
+app.controller("homeCtrl", function ($scope,$state,subscriptionFactory,optionFactory,$window,$document,$q,lodash) {
 /**************************************
 		Ressources
 ***************************************/
@@ -35,7 +35,7 @@ $q.all([
 /* function */
 
 
-$scope.abonnementActive = function(sub,index){
+$scope.abonnementActive = function(sub,index,aboID){
 var found  = lodash.find($scope.subSelected,"abonnement-active")
 var key; 
 angular.forEach($scope.subSelected,function(v,k){
@@ -46,16 +46,20 @@ if(!found && $scope.subSelected.length < 1 || key == index){
 		$scope.subSelected = []
 		$scope.optSelected = []
 		$scope.btnValide = false;
+		$window.localStorage.removeItem('aboID');
+
 
 	}else{
 		$scope.subSelected[index] = "abonnement-active"
 		$scope.btnValide = true;
+		$scope.aboID = aboID
+		$window.localStorage.setItem('aboID', $scope.aboID);
 	}
 }
-	console.log($scope.subSelected.length)
+console.log($scope.subSelected)	
 }
 
-$scope.optActive = function(opt,index){
+$scope.optActive = function(opt,index,optID){
 if ($scope.subSelected.length >= 1) {
 
 	var found  = lodash.find($scope.optSelected,"option-active")
@@ -66,9 +70,13 @@ if ($scope.subSelected.length >= 1) {
 	if(!found && $scope.optSelected.length < 1 || key == index){	
 		if($scope.optSelected[index] == "option-active"){
 			$scope.optSelected = []
+		$window.localStorage.removeItem('optionId');
 
 		}else{
 			$scope.optSelected[index] = "option-active"
+			$scope.optID = optID
+			$window.localStorage.setItem('optionId', $scope.optID);
+
 		}
 		}
 	}else{
@@ -76,6 +84,11 @@ if ($scope.subSelected.length >= 1) {
 
 	}
 }
+
+$scope.submit = function(){
+	$state.transitionTo('subscription')
+}
+
 
 /**************************************
 		Animation

@@ -27,6 +27,18 @@ app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		controller: "registerCtrl",
 		data: { pageTitle: "Tel4g : Inscription" }
 		
+	}).state('authentication', {
+		url: "/authentification",
+		templateUrl : "templates/auth.html",
+		controller: "authCtrl",
+		data: { pageTitle: "Tel4g : authentification" }
+		
+	}).state('subscription', {
+		url: "/subscription/new",
+		templateUrl : "templates/subscription.html",
+		controller: "subscriptionCtrl",
+		data: { pageTitle: "Tel4g : Souscription" }
+		
 	})
 	$urlRouterProvider.otherwise('/index');
 
@@ -35,8 +47,15 @@ app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 
 });
 
-app.run(['$rootScope', '$state', '$stateParams',
-	function ($rootScope, $state, $stateParams) {
-		$rootScope.$state = $state;
-		$rootScope.$stateParams = $stateParams;
-	}])
+app.run(function ($rootScope, $http, $window, $state, authFactory,$stateParams, $transitions) {
+	$transitions.onStart({}, function(trans){
+		if ($window.localStorage.getItem('secretTokenAuth') != null) {	
+			$http.defaults.headers.common['Authorization'] ='Bearer ' + $window.localStorage.getItem('secretTokenAuth');
+		}
+
+		$rootScope.isAuth = authFactory.isAuth()
+	})
+	$rootScope.logout = function(){return authFactory.logout()};
+	$rootScope.$state = $state;
+	$rootScope.$stateParams = $stateParams;
+})

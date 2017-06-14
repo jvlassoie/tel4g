@@ -39,10 +39,10 @@
 				<div class="form-group">
 					<label for="inputEmail" class="col-md-2 control-label">Email</label>
 					<div class="col-md-10">
-						<input type="email" ng-model="newUser.email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email" required>
+						<input type="email" ng-model="newUser.email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email" ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i' required>
 						<div ng-show="formRegister.$submitted || formRegister.inputEmail.$touched">
 							<span class="errorInput" ng-show="formRegister.inputEmail.$error.required">Veuillez saisir votre email.</span>
-							<span class="errorInput" ng-show="formRegister.inputEmail.$error.email">Votre email est invalide.</span>
+							<span class="errorInput" ng-show="formRegister.inputEmail.$error.email || formRegister.inputEmail.$error.pattern">Votre email est invalide.</span>
 						</div>
 					</div>
 				</div>
