@@ -19,28 +19,34 @@
 					<tbody>
 						<tr>
 							<td>Telephonie</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
+							<td>{{myAbonnement.name}}</td>
+							<td>
+							{{myAbonnement.capacity}}
+							<br/>
+							{{myAbonnement.destination}}
+							<br/>
+							{{myAbonnement.zone}}
+							</td>
+							<td>{{myAbonnement.price}}</td>
 						</tr>
 						<tr>
 							<td>Option</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
+							<td>{{myOption.name}}</td>
+							<td>{{myOption.details}}</td>
+							<td>{{myOption.price}}</td>
 						</tr>
 						<tr class="info">
 							<td>Total</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
+							<td></td>
+							<td></td>
+							<td>{{total | number:2}} €</td>
 						</tr>
 					</tbody>
 				</table> 
 				<div class="row">
 					<div class="col-xs-12">
-						<button class="btn btn-success">Submit</button>
-						<button class="btn btn-warning">Annuler</button>
+						<button ng-click="subscriptionValidate()" class="btn btn-success">Souscrire</button>
+						<button ng-click="canceled()" class="btn btn-warning">Annuler</button>
 					</div>
 				</div>
 			</div>

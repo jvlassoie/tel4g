@@ -33,33 +33,39 @@ $q.all([
 	)
 
 /* function */
+if ($window.localStorage.getItem('abonnementId') != null || $window.localStorage.getItem('abonnementId') != undefined) {
+		$scope.subSelected[$window.localStorage.getItem('abonnementId')] = "abonnement-active"
+		$scope.btnValide = true;	
+		if ($window.localStorage.getItem('optionId') != null || $window.localStorage.getItem('optionId') != undefined) {
+		$scope.optSelected[$window.localStorage.getItem('optionId')] = "option-active"
+		}
+	}
 
-
-$scope.abonnementActive = function(sub,index,aboID){
+$scope.abonnementActive = function(sub,aboID){
 var found  = lodash.find($scope.subSelected,"abonnement-active")
 var key; 
 angular.forEach($scope.subSelected,function(v,k){
 	key = k
 })	
-if(!found && $scope.subSelected.length < 1 || key == index){	
-	if($scope.subSelected[index] == "abonnement-active"){
+if(!found && $scope.subSelected.length < 1 || key == aboID){	
+	if($scope.subSelected[aboID] == "abonnement-active"){
 		$scope.subSelected = []
 		$scope.optSelected = []
 		$scope.btnValide = false;
-		$window.localStorage.removeItem('aboID');
+		$window.localStorage.removeItem('abonnementId');
 
 
 	}else{
-		$scope.subSelected[index] = "abonnement-active"
+		$scope.subSelected[aboID] = "abonnement-active"
 		$scope.btnValide = true;
 		$scope.aboID = aboID
-		$window.localStorage.setItem('aboID', $scope.aboID);
+		$window.localStorage.setItem('abonnementId', $scope.aboID);
 	}
 }
 console.log($scope.subSelected)	
 }
 
-$scope.optActive = function(opt,index,optID){
+$scope.optActive = function(opt,optID){
 if ($scope.subSelected.length >= 1) {
 
 	var found  = lodash.find($scope.optSelected,"option-active")
@@ -67,16 +73,16 @@ if ($scope.subSelected.length >= 1) {
 	angular.forEach($scope.optSelected,function(v,k){
 		key = k
 	})	
-	if(!found && $scope.optSelected.length < 1 || key == index){	
-		if($scope.optSelected[index] == "option-active"){
+	if(!found && $scope.optSelected.length < 1 || key == optID){	
+		if($scope.optSelected[optID] == "option-active"){
 			$scope.optSelected = []
 		$window.localStorage.removeItem('optionId');
 
 		}else{
-			$scope.optSelected[index] = "option-active"
+			$scope.optSelected[optID] = "option-active"
 			$scope.optID = optID
 			$window.localStorage.setItem('optionId', $scope.optID);
-
+			console.log(optID)
 		}
 		}
 	}else{
@@ -84,7 +90,6 @@ if ($scope.subSelected.length >= 1) {
 
 	}
 }
-
 $scope.submit = function(){
 	$state.transitionTo('subscription')
 }

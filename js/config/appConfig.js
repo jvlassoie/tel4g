@@ -1,4 +1,4 @@
-var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker'])
+var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker','angularFileUpload'])
 app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 	$stateProvider
 	.state('home', {	
@@ -39,6 +39,12 @@ app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		controller: "subscriptionCtrl",
 		data: { pageTitle: "Tel4g : Souscription" }
 		
+	}).state('subscriptionValidate', {
+		url: "/subscription/validate",
+		templateUrl : "templates/subscriptionValidate.html",
+		controller: "subscriptionValidateCtrl",
+		data: { pageTitle: "Tel4g : Validation de la souscription" }
+		
 	})
 	$urlRouterProvider.otherwise('/index');
 
@@ -59,3 +65,23 @@ app.run(function ($rootScope, $http, $window, $state, authFactory,$stateParams, 
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
 })
+
+//Directive API Google Maps
+app.directive('googleplace', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attrs, model) {
+            var options = {
+                types: [],
+                componentRestrictions: {}
+            };
+            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+
+            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+                scope.$apply(function() {
+                    model.$setViewValue(element.val());                
+                });
+            });
+        }
+    };
+});

@@ -1,0 +1,69 @@
+<div ng-include="'../partials/menu.html'">
+</div>
+<!-- CONTENT -->
+<div class="container">
+	<form class="form-horizontal">
+		<fieldset>
+			<legend>Validation de la souscription</legend>
+<!-- 			<div class="form-group">
+				<label for="inputIban" class="col-lg-2 control-label">IBAN*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" ng-model="formSouscription.iban" id="inputIban" placeholder="IBAN" required>
+				</div>
+			</div>	
+			<div class="form-group">
+				<label for="inputBic" class="col-lg-2 control-label">BIC*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" ng-model="formSouscription.bic" id="inputBic" placeholder="BIC" required>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="inputCivilite" class="col-lg-2 control-label">Civilité*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" ng-model="formSouscription.civilite" id="inputCivilite" placeholder="Civilité" required>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="inputNom" class="col-lg-2 control-label">Nom*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" ng-model="formSouscription.nom" id="inputNom" placeholder="Nom" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPrenom" class="col-lg-2 control-label">Prenom*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" ng-model="formSouscription.prenom" id="inputPrenom" placeholder="Prenom" required>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="inputAdresse" class="col-lg-2 control-label">Adresse*</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" name="inputAdresse" ng-model="formSouscription.adresse" id="inputAdresse" placeholder="Adresse" googleplace required>
+				</div>
+			</div>
+			<br/> -->
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<label class="btn btn-default btn-file">
+						Carte d'identité <input type="file" name="inputFileId" nv-file-select uploader="uploader" required>	
+					</label>
+					<ul>
+						<li ng-repeat="item in uploader.queue">
+							Fichier: <span ng-bind="item.file.name"></span><br/>
+							<button class="btn btn-info btn-file" ng-click="item.upload()">upload</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<br/>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<button class="btn btn-success">Souscrire</button>
+					<button ng-click="canceled()" class="btn btn-warning">Annuler</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<div ng-include="'../partials/footer.html'">
+</div>

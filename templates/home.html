@@ -35,7 +35,7 @@
 				<div class="row" >
 					<div ng-repeat='sub in subscriptions' >
 						<div class="col-xs-12 col-md-4" >
-							<div ng-click="abonnementActive(sub,$index,sub.id)" ng-class="subSelected[$index]" class="choice">
+							<div ng-click="abonnementActive(sub,sub.id)" ng-class="subSelected[sub.id]" class="choice">
 								<div class="panel panel-default">
 									<div class="panel-heading title text-center">{{sub.name}}</div>
 									<div class="row">
@@ -85,7 +85,7 @@
 				<div class="row">
 					<div ng-repeat='opt in options'>
 						<div class="col-xs-12 col-md-4">
-							<div ng-click="optActive(opt,$index,opt.id)" ng-class="optSelected[$index]" class="choice" >
+							<div ng-click="optActive(opt,opt.id)" ng-class="optSelected[opt.id]" class="choice" >
 								<div class="panel panel-default" >
 									<div class="panel-heading title text-center">{{opt.name}}</div>
 									<div class="panel-body">

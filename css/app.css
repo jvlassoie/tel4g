@@ -4,7 +4,6 @@
 @font-face {
   font-family: "VarelaRound";
   src: url("../fonts/VarelaRound-Regular.ttf"); }
-
 /***********************************
 	COLORS
 ***********************************/
@@ -31,7 +30,6 @@ body {
 
 .panel ul {
   list-style-type: none; }
-
 .panel .price {
   font-size: 2em; }
 
@@ -152,13 +150,11 @@ body {
     -webkit-transform: rotate(0deg); }
   100% {
     -webkit-transform: rotate(360deg); } }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-
 /* Add animation to "page content" */
 .animate-bottom {
   position: relative;
@@ -174,7 +170,6 @@ body {
   to {
     bottom: 0px;
     opacity: 1; } }
-
 @keyframes animatebottom {
   from {
     bottom: -100px;
@@ -182,7 +177,6 @@ body {
   to {
     bottom: 0;
     opacity: 1; } }
-
 /***********************************
   FORM REGISTER
 ***********************************/
@@ -191,3 +185,27 @@ body {
 
 .errorInput {
   color: #c0392b; }
+
+/***********************************
+  Button files
+***********************************/
+.btn-file {
+  position: relative;
+  overflow: hidden; }
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block; }
+
+/*# sourceMappingURL=app.css.map */

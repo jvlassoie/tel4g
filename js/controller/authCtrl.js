@@ -1,4 +1,4 @@
-app.controller("authCtrl", function ($scope, $rootScope,$http,authFactory,$stateParams,$window,$document,$q,lodash,$window) {
+app.controller("authCtrl", function ($scope,$rootScope,$http,authFactory,$stateParams,$window,$document,$q,lodash,$window) {
 /**************************************
 Ressources
 ***************************************/
