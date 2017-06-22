@@ -1,4 +1,4 @@
-var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker','angularFileUpload'])
+var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker'])
 app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 	$stateProvider
 	.state('home', {	
@@ -28,7 +28,7 @@ app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		data: { pageTitle: "Tel4g : Inscription" }
 		
 	}).state('authentication', {
-		url: "/authentification",
+		url: "/authentication",
 		templateUrl : "templates/auth.html",
 		controller: "authCtrl",
 		data: { pageTitle: "Tel4g : authentification" }
@@ -68,20 +68,63 @@ app.run(function ($rootScope, $http, $window, $state, authFactory,$stateParams, 
 
 //Directive API Google Maps
 app.directive('googleplace', function() {
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attrs, model) {
-            var options = {
-                types: [],
-                componentRestrictions: {}
-            };
-            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+	return {
+		require: 'ngModel',
+		link: function(scope, element, attrs, model) {
+			var options = {
+				types: [],
+				componentRestrictions: {}
+			};
+			scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
-            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-                scope.$apply(function() {
-                    model.$setViewValue(element.val());                
-                });
-            });
+			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+				scope.$apply(function() {
+					model.$setViewValue(element.val());                
+				});
+			});
+		}
+	};
+});
+
+app.directive('fileModel', ['$parse', function ($parse) {
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var model = $parse(attrs.fileModel);
+			var modelSetter = model.assign;
+
+			element.bind('change', function(){
+				scope.$apply(function(){
+					modelSetter(scope, element[0].files[0]);
+				});
+			});
+		}
+	};
+}]);
+
+app.service('fileUpload', function ($http) {
+	this.uploadFileToUrl = function(file, uploadUrl){
+		var fd = new FormData();
+		fd.append('file', file);
+
+		return $http({
+			method: 'POST',
+			url: uploadUrl,
+			data: fd,
+			transformRequest: angular.identity,
+			headers: {'Content-Type': undefined}
+		})
+
+	}
+});
+
+app.directive("ngFormCommit", [function(){
+    return {
+        require:"form",
+        link: function($scope, $el, $attr, $form) {
+            $form.commit = function() {
+                $el[0].submit();
+            };
         }
     };
-});
+}])

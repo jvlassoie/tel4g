@@ -19,6 +19,14 @@ app.factory('authFactory', function($http,baseFactory,$httpParamSerializer, $win
 			}
 		},
 
+		verifEmail: function (email){
+			return $http({
+				method : "GET", 
+				url : baseFactory.baseURL + '/checkmailexist/' + email
+			})
+
+		},
+
 		isAuth: function(){
 			if ($window.localStorage.getItem('secretTokenAuth') != null) {
 				console.log('authentifié')

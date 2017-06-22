@@ -2,63 +2,73 @@
 </div>
 <!-- CONTENT -->
 <div class="container">
-	<form class="form-horizontal">
+	<form novalidate class="form-horizontal" name="formSub" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Validation de la souscription</legend>
-<!-- 			<div class="form-group">
+			<div class="form-group">
 				<label for="inputIban" class="col-lg-2 control-label">IBAN*</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.iban" id="inputIban" placeholder="IBAN" required>
+					<input type="text" class="form-control" ng-model="formSouscription.iban" name="inputIban" id="inputIban" placeholder="IBAN" maxlength="16" ng-pattern="/^BE[0-9]{14}$/" required>
+					<div ng-show="formSub.$submitted || formSub.inputIban.$touched">
+						<span class="errorInput" ng-show="formSub.inputIban.$error.required">Veuillez saisir votre IBAN.</span>
+						<span class="errorInput" ng-show="formSub.inputIban.$error.pattern">IBAN incorrect.</span>
+					</div>
 				</div>
 			</div>	
 			<div class="form-group">
 				<label for="inputBic" class="col-lg-2 control-label">BIC*</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.bic" id="inputBic" placeholder="BIC" required>
+					<input type="text" class="form-control" ng-model="formSouscription.bic" name="inputBic" id="inputBic" placeholder="BIC" maxlength="11" required>
+					<div ng-show="formSub.$submitted || formSub.inputBic.$touched">
+						<span class="errorInput" ng-show="formSub.inputBic.$error.required">Veuillez saisir votre BIC.</span>
+					</div>
 				</div>
 			</div>		
 			<div class="form-group">
-				<label for="inputCivilite" class="col-lg-2 control-label">Civilité*</label>
+				<label for="inputCivilite" class="col-lg-2 control-label">Civilité</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.civilite" id="inputCivilite" placeholder="Civilité" required>
+					<input type="text" class="form-control" ng-model="formSouscription.civilite" name="inputCivilite" id="inputCivilite" placeholder="Civilité">
 				</div>
 			</div>		
 			<div class="form-group">
 				<label for="inputNom" class="col-lg-2 control-label">Nom*</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.nom" id="inputNom" placeholder="Nom" required>
+					<input type="text" class="form-control" ng-model="formSouscription.nom" name="inputNom" id="inputNom" placeholder="Nom" required>
+					<div ng-show="formSub.$submitted || formSub.inputNom.$touched">
+						<span class="errorInput" ng-show="formSub.inputNom.$error.required">Veuillez saisir votre Nom.</span>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputPrenom" class="col-lg-2 control-label">Prenom*</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.prenom" id="inputPrenom" placeholder="Prenom" required>
+					<input type="text" class="form-control" ng-model="formSouscription.prenom" name="inputPrenom" id="inputPrenom" placeholder="Prenom" required>
+					<div ng-show="formSub.$submitted || formSub.inputPrenom.$touched">
+						<span class="errorInput" ng-show="formSub.inputPrenom.$error.required">Veuillez saisir votre prenom.</span>
+					</div>
 				</div>
 			</div>		
 			<div class="form-group">
 				<label for="inputAdresse" class="col-lg-2 control-label">Adresse*</label>
 				<div class="col-lg-10">
 					<input type="text" class="form-control" name="inputAdresse" ng-model="formSouscription.adresse" id="inputAdresse" placeholder="Adresse" googleplace required>
-				</div>
-			</div>
-			<br/> -->
-			<div class="form-group">
-				<div class="col-lg-10 col-lg-offset-2">
-					<label class="btn btn-default btn-file">
-						Carte d'identité <input type="file" name="inputFileId" nv-file-select uploader="uploader" required>	
-					</label>
-					<ul>
-						<li ng-repeat="item in uploader.queue">
-							Fichier: <span ng-bind="item.file.name"></span><br/>
-							<button class="btn btn-info btn-file" ng-click="item.upload()">upload</button>
-						</li>
-					</ul>
+					<div ng-show="formSub.$submitted || formSub.inputAdresse.$touched">
+						<span class="errorInput" ng-show="formSub.inputAdresse.$error.required">Veuillez saisir votre Adresse.</span>
+					</div>
 				</div>
 			</div>
 			<br/>
 			<div class="form-group">
 				<div class="col-lg-10 col-lg-offset-2">
-					<button class="btn btn-success">Souscrire</button>
+					Carte d'identité <input type="file" ng-model="formSouscription.identity" file-model="myFile" name="file" required>
+					<!-- <div ng-show="formSub.$submitted || formSub.file.$touched">
+						<span class="errorInput" ng-show="formSub.file.$error.required">Veuillez selectionner votre carte d'identité.</span>
+					</div> -->	
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<button class="btn btn-success" ng-disabled="formSub.$invalid"  ng-click="goForm(formSouscription)">Souscrire</button>
 					<button ng-click="canceled()" class="btn btn-warning">Annuler</button>
 				</div>
 			</div>

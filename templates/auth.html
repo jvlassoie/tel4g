@@ -12,6 +12,7 @@
 					<div ng-show="formAuth.$submitted || formAuth.inputEmail.$touched">
 						<span class="errorInput" ng-show="formAuth.inputEmail.$error.required">Veuillez saisir votre email.</span>
 						<span class="errorInput" ng-show="formAuth.inputEmail.$error.email || formAuth.inputEmail.$error.pattern">Votre email est invalide.</span>
+						<span class="errorInput" ng-show="emailVerif == false">Cette email est inconnue.</span>
 					</div>
 				</div>
 			</div>
@@ -21,12 +22,13 @@
 					<input type="password" ng-model="userAuth.password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Mot de passe" required>
 					<div ng-show="formAuth.$submitted || formAuth.inputPassword.$touched">
 						<span class="errorInput" ng-show="formAuth.inputPassword.$error.required">Veuillez saisir votre mot de passe.</span>
+						<span class="errorInput" ng-show="verifPass == false">Mot de passe incorrect.</span>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-12 text-center" id="customButtonSubmit">
-					<button type="submitRegister" ng-disabled="userAuth.password == NULL || userAuth.email == NULL || formAuth.$invalid" class="btn btn-lg btn-primary">M'identifier</button>
+					<button type="submit" ng-disabled="userAuth.password == NULL || userAuth.email == NULL || formAuth.$invalid" class="btn btn-lg btn-primary">M'identifier</button>
 				</div>
 			</div>
 		</fieldset>

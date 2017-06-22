@@ -6,11 +6,13 @@ Ressources
 if($rootScope.isAuth){return $window.location.href = '/index';}
 
 /* init var*/
-
 $scope.loader = false
+$scope.verifForm = function($form){
+	if($form.$valid){
+		$scope.loader = true
+	}
+}
 $scope.addUser = function(formUser){
-	$scope.loader = true
-	
 	var user = {
 		email: formUser.email,
 		firstname: formUser.firstName,
@@ -30,10 +32,10 @@ $scope.addUser = function(formUser){
 		$window.alert("un nouvel inscrit !")
 		authFactory.login(userCo)
 		.then(function(data){
-		$window.localStorage.setItem('secretTokenAuth',data.data.token);
-		$window.location.href = '/index';
+			$window.localStorage.setItem('secretTokenAuth',data.data.token);
+			$window.location.href = '/index';
 		},function(msg){
-		console.log("auth error")
+			console.log("auth error")
 		})
 		console.log("adding user successfully")
 	},function(msg){
@@ -42,8 +44,8 @@ $scope.addUser = function(formUser){
 		console.log("failure")
 		$window.location.href = '/index';
 
-	})
+			})
 
-}
+	}
 
 })

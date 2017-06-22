@@ -1,4 +1,4 @@
-app.controller("subscriptionValidateCtrl", function ($scope,$rootScope,FileUploader,$state,baseFactory,$window,$document,$q,lodash) {
+app.controller("subscriptionValidateCtrl", function ($scope,$http,subscriptionInfoFactory,$rootScope,fileUpload,$state,baseFactory,$window,$document,$q,lodash) {
 /**************************************
 Ressources
 ***************************************/
@@ -11,7 +11,23 @@ $scope.loader = false
 $scope.canceled = function (){
 	$state.transitionTo('home')
 }
-$scope.uploader = new FileUploader();
-$scope.uploader.url = baseFactory.baseURL+'/image/'
-console.log($scope.uploader)
+
+$scope.validFile = false
+$scope.goForm = function(formSub){
+	$scope.validFile = true
+	var file = $scope.myFile;
+	var uploadUrl = baseFactory.baseURL + '/upload';
+	fileUpload.uploadFileToUrl(file, uploadUrl);
+	console.log(formSub)
+	subscriptionInfoFactory.postSubscriptionInfo(formSub.iban,formSub.bic,formSub.nom,formSub.prenom,formSub.adresse)
+	.then(function(){
+		
+	},function(){
+
+	})
+}
+
+
+
+
 })

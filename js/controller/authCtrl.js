@@ -12,16 +12,25 @@ $scope.loginUser = function(formUser){
 		email: formUser.email,
 		password: formUser.password
 	}
-	authFactory.login(user)
-	.then(function(data){
-		console.log(data)
-		console.log(data.data.token)
-		$window.localStorage.setItem('secretTokenAuth',data.data.token);
-		$window.location.href = '/index';
-	},function(msg){
-		console.log('error')
-		$window.location.href = '/index';
+
+	authFactory.verifEmail(user.email).then(function(res){
+		$scope.verifPass = true
+		$scope.emailVerif = res.data.result;
+		if ($scope.emailVerif == true) {
+			authFactory.login(user)
+			.then(function(data){
+				$window.localStorage.setItem('secretTokenAuth',data.data.token);
+				$window.location.href = '/index';
+			},function(msg){
+				console.log('error')
+				$scope.verifPass = false
+			})
+		}
+
+	},function(){
+
 	})
+	
 }
 
 
