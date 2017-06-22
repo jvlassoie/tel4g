@@ -19,6 +19,7 @@ Todo List :
 </VirtualHost>
 ```
 * Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
+
 Cahier des charges :
 -------
 [Lien du cahier des charges](doc/cahierDesCharges.md)
