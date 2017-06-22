@@ -23,3 +23,8 @@ Todo List :
 Cahier des charges :
 -------
 [Lien du cahier des charges](doc/cahierDesCharges.md)
+
+Fonctionnalités :
+-------
+
+Boutique de téléphones qui permet de voir des models de téléphones choisir des options ou/et un abonnement avec connection (non-achevé).
