@@ -1,0 +1,23 @@
+{
+  "name": "tel4g",
+  "description": "",
+  "main": "app.html",
+  "authors": [
+    "jean-valentin <jv.lassoie@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs-datepicker": "^2.1.19",
+    "angular-file-upload": "^2.5.0",
+    "ng-lodash": "^0.5.0",
+    "ngBootbox": "^0.2.0"
+  }
+}
