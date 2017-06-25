@@ -1,4 +1,4 @@
-app.controller("registerCtrl", function ($rootScope,$scope,authFactory,registerFactory,$stateParams,$window,$document,$q,lodash,$window) {
+app.controller("registerCtrl", function ($rootScope,$ngBootbox,$scope,authFactory,registerFactory,$stateParams,$window,$document,$q,lodash,$window) {
 /**************************************
 Ressources
 ***************************************/
@@ -29,18 +29,21 @@ $scope.addUser = function(formUser){
 		console.log("test")
 		console.log(userCo)
 		$scope.loader = false
-		$window.alert("un nouvel inscrit !")
 		authFactory.login(userCo)
 		.then(function(data){
+		$ngBootbox.alert("un nouvel inscrit !").then(function(){	
+		$scope.loader = false
 			$window.localStorage.setItem('secretTokenAuth',data.data.token);
 			$window.location.href = '/index';
+		})
 		},function(msg){
 			console.log("auth error")
 		})
+		$scope.loader = true
 		console.log("adding user successfully")
 	},function(msg){
 		$scope.loader = false
-		$window.alert("une erreur est survenue !")
+		$ngBootbox.alert("une erreur est survenue !")
 		console.log("failure")
 		$window.location.href = '/index';
 

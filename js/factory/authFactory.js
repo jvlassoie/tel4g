@@ -1,5 +1,12 @@
 app.factory('authFactory', function($http,baseFactory,$httpParamSerializer, $window){
 	var factory = {
+		getUserIdCurrent: function(){
+			return $http({
+				method : "GET", 
+				url : baseFactory.baseURL + "/getuserid",
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			})
+		},
 		login: function (user) {
 			return $http({
 				method : "POST", 

@@ -1,4 +1,4 @@
-app.controller("homeCtrl", function ($scope,$state,subscriptionFactory,optionFactory,$window,$document,$q,lodash) {
+app.controller("homeCtrl", function ($scope,$ngBootbox,$state,subscriptionFactory,optionFactory,$window,$document,$q,lodash) {
 /**************************************
 		Ressources
 ***************************************/
@@ -7,7 +7,6 @@ $scope.loader = false
 $scope.btnValide = false
 $scope.subSelected = []
 $scope.optSelected = []
-
 $q.all([
 		subscriptionFactory.getSubscription()
 		.then(function(obj){

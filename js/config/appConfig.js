@@ -1,4 +1,4 @@
-var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker'])
+var app = angular.module("app",['ui.router','ngLodash','720kb.datepicker','ngBootbox'])
 app.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 	$stateProvider
 	.state('home', {	

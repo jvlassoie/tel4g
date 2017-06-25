@@ -27,9 +27,12 @@
 			<div class="form-group">
 				<label for="inputCivilite" class="col-lg-2 control-label">Civilité</label>
 				<div class="col-lg-10">
-					<input type="text" class="form-control" ng-model="formSouscription.civilite" name="inputCivilite" id="inputCivilite" placeholder="Civilité">
+					<select class="form-control" ng-model="formSouscription.civilite" name="inputCivilite"  id="inputCivilite">
+						<option value="Monsieur">Monsieur</option>
+						<option value="Madame">Madame</option>
+					</select>
 				</div>
-			</div>		
+			</div>
 			<div class="form-group">
 				<label for="inputNom" class="col-lg-2 control-label">Nom*</label>
 				<div class="col-lg-10">
@@ -60,7 +63,7 @@
 			<br/>
 			<div class="form-group">
 				<div class="col-lg-10 col-lg-offset-2">
-					Carte d'identité <input type="file" ng-model="formSouscription.identity" file-model="myFile" name="file" required>
+					Carte d'identité <input type="file" ng-model="formSouscription.identity" file-model="myFile" name="file">
 					<!-- <div ng-show="formSub.$submitted || formSub.file.$touched">
 						<span class="errorInput" ng-show="formSub.file.$error.required">Veuillez selectionner votre carte d'identité.</span>
 					</div> -->	
