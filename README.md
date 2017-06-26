@@ -13,8 +13,8 @@ Todo List :
 
 <VirtualHost *:80>
 	ServerName local.tel4g
-	DocumentRoot C:/wamp64/www/projectTel4g
-	<Directory  "C:/wamp64/www/projectTel4g">
+	DocumentRoot C:/wamp64/www/projecttel4g
+	<Directory  "C:/wamp64/www/projecttel4g">
 	</Directory>
 </VirtualHost>
 ```
