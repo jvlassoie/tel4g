@@ -25,7 +25,7 @@ $scope.goForm = function(formSub){
 	},function(){
 
 	})
-	/*authFactory.getUserIdCurrent()
+	authFactory.getUserIdCurrent()
 	.then(function(res){
 		$scope.idUs = res.data.id
 
@@ -33,9 +33,17 @@ $scope.goForm = function(formSub){
 		.then(function(res){
 			subscriptionInfoFactory.postSubscriptionInfo(formSub.iban,formSub.bic,formSub.nom,formSub.prenom,formSub.adresse,res.data.nameImg)
 			.then(function(res){
-				$ob = angular.fromJson(angular.fromJson(res.data))
-				$ob.push({"user": $scope.idUs})
-				subscriptionInfoFactory.postSubscriptionInfoApi($ob)
+				var ob = angular.fromJson(angular.fromJson(res.data))
+				subscriptionInfoFactory.postSubscriptionInfoApi(ob)
+				.then(function(res){
+				subscriptionInfoFactory.getSubscriptionInfoLastId().then(function(res){
+					var id = res.data.id
+					subscriptionInfoFactory.putSubUser(id,$scope.idUs)
+				})
+					
+				},function(){
+
+				})
 
 			},function(){
 
@@ -45,7 +53,7 @@ $scope.goForm = function(formSub){
 		})
 	},function(){
 
-	})*/
+	})
 	console.log(formSub)
 }
 

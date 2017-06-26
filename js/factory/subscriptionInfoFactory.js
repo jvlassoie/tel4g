@@ -21,6 +21,19 @@ app.factory('subscriptionInfoFactory',function($http,baseFactory) {
 				data : sub,
 				url : baseFactory.baseURL + "/subscription_infos"
 			})
+		},
+		getSubscriptionInfoLastId: function () {
+			return $http({ 
+				method : "GET",
+				url : baseFactory.baseURL + "/subinfoid"
+			})
+		},
+		putSubUser: function (id,idUser) {
+			return $http({ 
+				method : "PUT",
+				data: {"subscriptionInfo":{"id" : id}},
+				url : baseFactory.baseURL + '/users/'+ idUser
+			})
 		}
 	}
 	return factory
