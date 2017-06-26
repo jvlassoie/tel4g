@@ -12,22 +12,17 @@ $q.all([
 		.then(function(obj){
 			return $scope.subscriptions = obj.data; 
 		},function(msg) {
-			console.log("un problème est survenu "+ msg)
 		}),
-		
 		optionFactory.getOption()
 		.then(function(obj){
 			return $scope.options = obj.data; 
 		},function(msg) {
-			console.log("un problème est survenu "+ msg)
 		})
 	]).then(
 		/* execution après tout les appels ajax */
 		function(){
 			$scope.loader = true
-			console.log("each call ajax has success")
 		},function () {
-			console.log("error")
 		}
 	)
 
@@ -61,7 +56,6 @@ if(!found && $scope.subSelected.length < 1 || key == aboID){
 		$window.localStorage.setItem('abonnementId', $scope.aboID);
 	}
 }
-console.log($scope.subSelected)	
 }
 
 $scope.optActive = function(opt,optID){
@@ -81,7 +75,6 @@ if ($scope.subSelected.length >= 1) {
 			$scope.optSelected[optID] = "option-active"
 			$scope.optID = optID
 			$window.localStorage.setItem('optionId', $scope.optID);
-			console.log(optID)
 		}
 		}
 	}else{

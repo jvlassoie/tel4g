@@ -26,29 +26,23 @@ $scope.addUser = function(formUser){
 	}
 	registerFactory.registerUser(user)
 	.then(function(msg){
-		console.log("test")
-		console.log(userCo)
 		$scope.loader = false
 		authFactory.login(userCo)
 		.then(function(data){
-		$ngBootbox.alert("un nouvel inscrit !").then(function(){	
-		$scope.loader = false
-			$window.localStorage.setItem('secretTokenAuth',data.data.token);
-			$window.location.href = '/index';
-		})
+			$ngBootbox.alert("un nouvel inscrit !").then(function(){	
+				$scope.loader = false
+				$window.localStorage.setItem('secretTokenAuth',data.data.token);
+				$window.location.href = '/index';
+			})
 		},function(msg){
-			console.log("auth error")
 		})
 		$scope.loader = true
-		console.log("adding user successfully")
 	},function(msg){
 		$scope.loader = false
 		$ngBootbox.alert("une erreur est survenue !")
-		console.log("failure")
 		$window.location.href = '/index';
 
-			})
-
-	}
+	})
+}
 
 })

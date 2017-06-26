@@ -20,11 +20,10 @@ $scope.goForm = function(formSub){
 	var uploadUrl = baseFactory.baseURL + '/upload';
 	authFactory.getUserIdCurrent().then(
 		function(res){
-		$scope.idUs = res.data.id
-		console.log($scope.idUs)
-	},function(){
+			$scope.idUs = res.data.id
+		},function(){
 
-	})
+		})
 	authFactory.getUserIdCurrent()
 	.then(function(res){
 		$scope.idUs = res.data.id
@@ -36,10 +35,10 @@ $scope.goForm = function(formSub){
 				var ob = angular.fromJson(angular.fromJson(res.data))
 				subscriptionInfoFactory.postSubscriptionInfoApi(ob)
 				.then(function(res){
-				subscriptionInfoFactory.getSubscriptionInfoLastId().then(function(res){
-					var id = res.data.id
-					subscriptionInfoFactory.putSubUser(id,$scope.idUs)
-				})
+					subscriptionInfoFactory.getSubscriptionInfoLastId().then(function(res){
+						var id = res.data.id
+						subscriptionInfoFactory.putSubUser(id,$scope.idUs)
+					})
 					
 				},function(){
 
@@ -54,10 +53,5 @@ $scope.goForm = function(formSub){
 	},function(){
 
 	})
-	console.log(formSub)
 }
-
-
-
-
 })

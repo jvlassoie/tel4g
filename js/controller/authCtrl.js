@@ -22,23 +22,18 @@ $scope.loginUser = function(formUser){
 		email: formUser.email,
 		password: formUser.password
 	}
-	console.log(1)
 	authFactory.verifEmail(user.email)
 	.then(function(res){
-		console.log(2)
 		$scope.verifPass = true
 		$scope.emailVerif = res.data.result;
 		if ($scope.emailVerif == true) {
 			authFactory.login(user)
 			.then(function(data){
-				console.log(3)
 				$scope.loader = true
 				$window.localStorage.setItem('secretTokenAuth',data.data.token);
 				$window.location.href = '/index';
 			},function(msg){
-				console.log(4)
 				$scope.loader = true
-				console.log('error')
 				$scope.verifPass = false
 			})
 		}else{
@@ -46,14 +41,9 @@ $scope.loginUser = function(formUser){
 		}
 
 	},function(){
-		console.log(5)
 		$scope.loader = true
 
-	})
-	
+	})	
 }
-
-
-
 
 })

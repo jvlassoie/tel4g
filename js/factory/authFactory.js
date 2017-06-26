@@ -36,10 +36,8 @@ app.factory('authFactory', function($http,baseFactory,$httpParamSerializer, $win
 
 		isAuth: function(){
 			if ($window.localStorage.getItem('secretTokenAuth') != null) {
-				console.log('authentifié')
 				return true
 			}else{
-				console.log('pas authentifié')
 				return false
 			}
 		}

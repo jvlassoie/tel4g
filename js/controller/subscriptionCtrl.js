@@ -18,7 +18,6 @@ if ($window.localStorage.getItem('abonnementId')) {
 		$scope.total += res.data.price
 		$scope.loader = true
 	},function(msg){
-		console.log('problem')
 	})
 	if (optionId != null) {
 		optionFactory.getOptionById(optionId).
@@ -26,7 +25,6 @@ if ($window.localStorage.getItem('abonnementId')) {
 			$scope.myOption = res.data
 			$scope.total += res.data.price
 		},function(){
-			console.log('problem')
 		})
 	}
 }
